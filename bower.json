@@ -1,0 +1,18 @@
+{
+  "name": "letme-travel",
+  "version": "0.0.0",
+  "homepage": "https://github.com/StasEvseev/letme-travel",
+  "authors": [
+    "stasevseev@gmail.com"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "knockout": "~3.1.0",
+    "sammy": "~0.7.5",
+    "requirejs": "~2.1.14",
+    "requirejs-plugins": "~1.0.2",
+    "underscore": "~1.6.0"
+  }
+}

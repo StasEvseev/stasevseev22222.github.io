@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 sidebar">
+
+            <div id="menu-items" data-bind="visible: showMenu">
+              <ul class="nav nav-sidebar" data-bind="foreach: menuItems">
+                  <li>
+                      <a data-bind="attr: { href: href}, text: text" ></a>
+                  </li>
+              </ul>
+            </div>
+
+            <div id="list-points" data-bind="visible: showListPoints">
+                Список точек
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: listPoints">
+                        <tr>
+                            <td>
+                              <a data-bind="attr: { href: $root.editUrl($data)}, text : $root.titleHref($data)">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div id="detail" data-bind="visible: showDetailPoint, with: currentPoint">
+                Детальная информация
+                <div class="form-group">
+                    <div id="name-group" class="form-group">
+                        <label for="name">Название точки</label>
+                        <input type="text" class="form-control" 
+                               id="name" placeholder="Введите название" 
+                               data-bind="value: nameAttr">
+                    </div>
+                    <label for="description">Описание точки</label>
+                    <textarea class="form-control" rows="3" id="description" 
+                              data-bind="value: descAttr">
+                    </textarea>
+                    <label for="coordinates">Координаты точки</label>
+                    <input type="text" class="form-control" 
+                           id="coordinates" placeholder="Координаты" 
+                           data-bind="value: markerCoords" disabled>
+                </div>
+                <button type="button" class="btn btn-default btn-lg" 
+                        data-bind="click: $root.addPoint, visible: $root.new">Добавить</button>
+                <button type="button" class="btn btn-default btn-lg"
+                        data-bind="click: $root.savePoint, visible: $root.edit">Сохранить</button>
+            </div>
+
+          </div>
+          <div class="col-md-9 col-md-offset-2 main">
+            <div id="map_canvas" style="width: 800px; height: 600px;"></div>
+          </div>
+      </div>
+    </div>
+  </body>
+  
+</html>
